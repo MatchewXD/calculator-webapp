@@ -3,11 +3,11 @@
 
 ## Table of Content
 
-1. [General Info](https://github.com/MatchewXD/calculator-webapp/edit/main/README.md#general-info)
-2. [Demo](https://github.com/MatchewXD/calculator-webapp/edit/main/README.md#-demo)
-3. [Technologies](https://github.com/MatchewXD/calculator-webapp/edit/main/README.md#-technologies)
-4. [Installation](https://github.com/MatchewXD/calculator-webapp/edit/main/README.md#-installation-and-setup)
-5. [Contributors](https://github.com/MatchewXD/calculator-webapp/edit/main/README.md#-contributors)
+1. [General Info](https://github.com/MatchewXD/calculator-webapp#general-info)
+2. [Demo](https://github.com/MatchewXD/calculator-webapp#-demo)
+3. [Technologies](https://github.com/MatchewXD/calculator-webapp#-technologies)
+4. [Installation](https://github.com/MatchewXD/calculator-webapp#-installation-and-setup)
+5. [Contributors](https://github.com/MatchewXD/calculator-webapp#-contributors)
 
 ## General Info
 A cheeky web-app calculator that talks smack occationally. A normal calculator with attitude.
