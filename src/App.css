@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Satisfy|Inter);
+
 /* Style Guide */
 :root {
   --black: rgba(0, 0, 0, 1);
@@ -8,20 +10,130 @@
 }
 
 .webpage {
-  display: flex;
-  width: 1440px;
-  height: 1024px;
-
-  background: #FFFFFF;
+  width: 100vw;
+  height: 100vh;
+  background: #d6fdff;
   border: 1px solid black;
 }
 
-.business-card {
-  width: 177px;
-  height: 96px;
-  margin-top: 1%;
 
-  background: linear-gradient(180deg, #E4C419 27.08%, rgba(228, 196, 25, 0.51) 88.54%);
+
+/* Business Card */
+
+.business-card {
+  position: absolute;
+  width: 12vw;
+  height: 6vw;
+  margin-top: 1vw;
+  margin-left: 1vw;
+
+  background: linear-gradient(180deg, #EBC600 27.08%, #FFE559 84.37%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 21px;
+}
+
+.matchewxd {
+  -webkit-text-stroke: 0.25px #0CCDD9;
+  width: 50%;
+  height: 26%;
+  margin-left: 12%;
+  padding-top: 3%;
+
+  font-family: 'Satisfy';
+  font-style: normal;
+  font-weight: 200;
+  /* font-size: 100%; */
+  font-size: 1.5vw;
+
+  color: #7851A9;
+
+  /* border: 0.25px solid red; */
+}
+
+.job-disc {
+  width: 75%;
+  height: 14px;
+  margin-top: 3%;
+  margin-left: 12%;
+
+  font-family: 'Inter';
+  font-size: 0.45vw;
+
+  color: #7851A9;
+
+  /* border: 1px solid blue; */
+}
+
+/* .linx {
+  width: 134px;
+  height: 35px;
+  margin-top: 3%;
+  margin-left: 12%;
+
+  font-family: 'Inter';
+  font-size: 0.45vw;
+
+  color: #7851A9;
+} */
+
+/* Calculator */
+
+.calc-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  /* border: 1px solid blue; */
+}
+
+.calc {
+  position: relative;
+  width: 32.5vw;
+  height: 36vw;
+  max-width: 648px;
+  max-height: 720px;
+  min-width: 350px;
+  min-height: 389px;
+  margin: 0 auto;
+  /* margin-top: 2rem; */
+
+  background: linear-gradient(180deg, #5DDFD7 0%, rgba(186, 255, 251, 0.83) 100%);
+  border: 1px solid black;
+  border-radius: 45px;
+}
+
+.eye-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 1%;
+
+  width: 32.5vw;
+  height: 6vw;
+  max-width: 648px;
+  max-height: 720px;
+  min-width: 350px;
+  min-height: 100px;
+  /* border: 1px solid black */
+}
+
+.eye {
+  width: 10vw;
+  height: 10vw;
+  min-width: 105px;
+  min-height: 105px;
+
+  background-color: var(--alto);
+  border: 1px solid black;
+  border-radius: 50%;
+  position: relative;
+}
+
+.left.eye {
+  left: 39%;
+}
+
+.right.eye {
+  right: 39%;
 }
