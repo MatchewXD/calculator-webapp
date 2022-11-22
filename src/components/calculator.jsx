@@ -19,6 +19,7 @@ class Calculator extends React.Component {
         {/* <div className="linx">GitHub<br></br>LinkedIn</div> */}
       </div>
       <div className="calc-container">
+        <div className="speech-bubble"></div>
         <div className="eye-container">
           <div className="left eye"></div>
           <div className="right eye"></div>

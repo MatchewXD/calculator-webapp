@@ -9,14 +9,20 @@
   --white: rgba(255, 255, 255, 1);
 }
 
+/* @media (max-width: 700px) {
+  .row, .navbar {
+    flex-direction: column;
+  }
+} */
+
+
 .webpage {
   width: 100vw;
   height: 100vh;
-  background: #d6fdff;
+
+  background: rgba(147, 255, 250, 0.83);
   border: 1px solid black;
 }
-
-
 
 /* Business Card */
 
@@ -64,18 +70,6 @@
   /* border: 1px solid blue; */
 }
 
-/* .linx {
-  width: 134px;
-  height: 35px;
-  margin-top: 3%;
-  margin-left: 12%;
-
-  font-family: 'Inter';
-  font-size: 0.45vw;
-
-  color: #7851A9;
-} */
-
 /* Calculator */
 
 .calc-container {
@@ -107,7 +101,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 1%;
+  margin-top: 4%;
 
   width: 32.5vw;
   height: 6vw;
@@ -123,6 +117,8 @@
   height: 10vw;
   min-width: 105px;
   min-height: 105px;
+  max-width: 195px;
+  max-height: 195px;
 
   background-color: var(--alto);
   border: 1px solid black;
@@ -136,4 +132,35 @@
 
 .right.eye {
   right: 39%;
+}
+
+/* Speech Bubble */
+
+.speech-bubble {
+  position: absolute;
+  width: 17vw;
+  height: 10vw;
+  left: 16vw;
+  top: 6vw;
+
+  background: #F0F0F0;
+  border: 0.817713px solid #000000;
+  border-radius: 34.3439px;
+}
+
+/* Media */
+
+@media (max-width: 960px) {
+
+  .speech-bubble {
+    position: unset;
+    width: 67vw;
+    height: 15vw;
+    max-width: 245px;
+    max-height: 63px;
+    margin-top: 3%;
+
+    background: #F0F0F0;
+    border: 0.817713px solid #000000;
+  }
 }
