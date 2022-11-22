@@ -16,7 +16,6 @@ class Calculator extends React.Component {
       <div className="business-card">
         <div className="matchewxd">MatchewXD</div>
         <div className="job-disc">Software Engineer<br></br>"Live Better Together"<br></br>GitHub<br></br>LinkedIn</div>
-        {/* <div className="linx">GitHub<br></br>LinkedIn</div> */}
       </div>
       <div className="calc-container">
         <div className="speech-bubble"></div>
@@ -25,6 +24,7 @@ class Calculator extends React.Component {
           <div className="right eye"></div>
         </div>
         <div className="calc"></div>
+        <div className="status-button"></div>
       </div>
     </div >;
   }

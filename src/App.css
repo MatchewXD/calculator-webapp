@@ -101,7 +101,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 4%;
+  margin-top: 6%;
 
   width: 32.5vw;
   height: 6vw;
@@ -148,6 +148,20 @@
   border-radius: 34.3439px;
 }
 
+/* Status Button */
+
+.status-button {
+  position: absolute;
+  width: 9.2vw;
+  height: 4.5vw;
+  left: 72vw;
+  top: 9vw;
+
+  background: linear-gradient(180deg, rgba(93, 223, 215, 0.21) 0%, rgba(93, 223, 215, 0.65) 48.44%, #5DDFD7 100%);
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
 /* Media */
 
 @media (max-width: 960px) {
@@ -163,4 +177,21 @@
     background: #F0F0F0;
     border: 0.817713px solid #000000;
   }
+
+  .status-button {
+    position: unset;
+    width: 9.2vw;
+    height: 4.5vw;
+    /* left: 72vw;
+    top: 9vw; */
+
+    min-width: 90px;
+    min-height: 44px;
+    margin-top: 3%;
+
+    background: linear-gradient(180deg, rgba(93, 223, 215, 0.21) 0%, rgba(93, 223, 215, 0.65) 48.44%, #5DDFD7 100%);
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+
 }
