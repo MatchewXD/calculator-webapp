@@ -104,19 +104,61 @@
   height: 31.6vw;
   margin-top: 6%;
 
-  background: #F3F3F3;
-  opacity: 0.36;
-  border: 0.817713px solid #000000;
+  min-width: 315px;
+  min-height: 343px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  background: #f3f3f34f;
+  border: 1px solid #000000;
+}
+
+.output-field {
+  width: 26vw;
+  height: 3vw;
+  margin-top: 4%;
+
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 5px;
 }
 
 /* Calculator Buttons */
 
 .buttons-frame {
-  width: 10vw;
-  height: 10vw;
+  width: 26vw;
+  height: 26vw;
 
-  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  padding: 3%;
+
+  /* border: 1px solid red; */
 }
+
+.calc-button {
+  width: 6vw;
+  height: 4.7vw;
+
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, #C9C9C9 100%);
+  border: 1px solid black;
+  border-radius: 12px;
+}
+
+.button-symbol {
+  text-align: center;
+  margin-top: 14%;
+  margin-bottom: 0;
+
+  font-family: 'Inter';
+  font-size: 26.9845px;
+}
+
+/* Calculator Eyes */
 
 .eye-container {
   display: flex;
