@@ -18,8 +18,9 @@ class Calculator extends React.Component {
         <div className="job-disc">Software Engineer<br></br>"Live Better Together"<br></br>GitHub<br></br>LinkedIn</div>
       </div>
       <div className="calc-container">
+        <div className="speech-tail tail1"></div>
+        <div className="speech-tail tail2"></div>
         <div className="speech-bubble"></div>
-        <div className="speech-tail"></div>
         <div className="eye-container">
           <div className="left eye"></div>
           <div className="right eye"></div>
