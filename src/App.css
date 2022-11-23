@@ -15,6 +15,10 @@
   }
 } */
 
+p {
+  cursor: default;
+}
+
 
 .webpage {
   width: 100vw;
@@ -168,6 +172,14 @@
   border-radius: 12px;
 }
 
+.calc-button:hover {
+  background: linear-gradient(180deg, rgba(225, 225, 225, 0.99) 0%, #C9C9C9 100%);
+}
+
+.calc-button:active {
+  background: linear-gradient(180deg, rgba(185, 185, 185, 0.99) 0%, #C9C9C9 100%);
+}
+
 .button-symbol {
   text-align: center;
   margin-top: 14%;
@@ -264,6 +276,14 @@
   background: linear-gradient(180deg, rgba(93, 223, 215, 0.21) 0%, rgba(93, 223, 215, 0.65) 48.44%, #5DDFD7 100%);
   border: 1px solid black;
   border-radius: 15px;
+}
+
+.status-button:hover {
+  background: linear-gradient(180deg, rgba(92, 221, 213, 0.21) 0%, rgba(65, 208, 199, 0.65) 48.44%, #59d9d1 100%);
+}
+
+.status-button:active {
+  background: linear-gradient(180deg, rgba(74, 178, 171, 0.21) 0%, rgba(60, 192, 183, 0.65) 48.44%, #4ebeb7 100%);
 }
 
 .status-text {
