@@ -1,5 +1,8 @@
 import React from 'react';
 import Buttons from './Buttons.jsx';
+import BusinessCard from './BusinessCard.jsx';
+import SpeechBubble from './SpeechBubble.jsx';
+import Eyes from './Eyes.jsx';
 // import { Link } from 'react-router-dom';
 
 class Calculator extends React.Component {
@@ -7,32 +10,29 @@ class Calculator extends React.Component {
     super(props)
     this.state = {
       github: "https://github.com/MatchewXD",
-      linkedin: "https://www.linkedin.com/in/matthew-seagren/"
+      linkedin: "https://www.linkedin.com/in/matthew-seagren/",
+      output: "0"
     }
 
     // this.renderView = this.renderView.bind(this)
   }
   render() {
     return <div className="webpage">
-      <div className="business-card">
-        <div className="matchewxd">MatchewXD</div>
-        <div className="job-disc">Software Engineer<br></br>"Live Better Together"<br></br>GitHub<br></br>LinkedIn</div>
-      </div>
+      <BusinessCard />
       <div className="calc-container">
-        <div className="speech-tail tail1"></div>
-        <div className="speech-tail tail2"></div>
-        <div className="speech-bubble"></div>
-        <div className="eye-container">
-          <div className="left eye"></div>
-          <div className="right eye"></div>
-        </div>
+        <SpeechBubble />
+        <Eyes />
         <div className="calc">
           <div className="calc-inner-frame">
-            <div className="output-field"></div>
+            <div className="output-field">
+              <p className="output-text">{this.state.output}</p>
+            </div>
             <Buttons />
           </div>
         </div>
-        <div className="status-button"></div>
+        <div className="status-button">
+          <p className="status-text">Wake</p>
+        </div>
       </div>
     </div >;
   }
