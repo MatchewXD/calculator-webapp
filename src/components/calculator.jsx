@@ -15,7 +15,15 @@ class Calculator extends React.Component {
     }
 
     // this.renderView = this.renderView.bind(this)
+    this.buttonClick = this.buttonClick.bind(this);
   }
+
+  buttonClick(e) {
+    // this.state(output: "0");
+    e.preventDefault();
+    console.log(e.target.textContent);
+  }
+
   render() {
     return <div className="webpage">
       <BusinessCard />
@@ -27,7 +35,7 @@ class Calculator extends React.Component {
             <div className="output-field">
               <p className="output-text">{this.state.output}</p>
             </div>
-            <Buttons />
+            <Buttons buttonClick={this.buttonClick} />
           </div>
         </div>
         <div className="status-button">
