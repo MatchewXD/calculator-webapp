@@ -1,4 +1,5 @@
 import React from 'react';
+import Buttons from './Buttons.jsx';
 // import { Link } from 'react-router-dom';
 
 class Calculator extends React.Component {
@@ -25,7 +26,12 @@ class Calculator extends React.Component {
           <div className="left eye"></div>
           <div className="right eye"></div>
         </div>
-        <div className="calc"></div>
+        <div className="calc">
+          <div className="calc-inner-frame">
+            <div className="output-field"></div>
+            <Buttons />
+          </div>
+        </div>
         <div className="status-button"></div>
       </div>
     </div >;

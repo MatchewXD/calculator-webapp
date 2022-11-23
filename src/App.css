@@ -90,11 +90,32 @@
   min-width: 350px;
   min-height: 389px;
   margin: 0 auto;
-  /* margin-top: 2rem; */
+
+  display: flex;
+  justify-content: center;
 
   background: linear-gradient(180deg, #5DDFD7 0%, rgba(186, 255, 251, 0.83) 100%);
   border: 1px solid black;
   border-radius: 45px;
+}
+
+.calc-inner-frame {
+  width: 29vw;
+  height: 31.6vw;
+  margin-top: 6%;
+
+  background: #F3F3F3;
+  opacity: 0.36;
+  border: 0.817713px solid #000000;
+}
+
+/* Calculator Buttons */
+
+.buttons-frame {
+  width: 10vw;
+  height: 10vw;
+
+  border: 1px solid red;
 }
 
 .eye-container {
@@ -219,5 +240,4 @@
   .speech-tail {
     border-color: transparent transparent transparent transparent;
   }
-
 }
