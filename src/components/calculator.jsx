@@ -11,7 +11,10 @@ class Calculator extends React.Component {
     this.state = {
       github: "https://github.com/MatchewXD",
       linkedin: "https://www.linkedin.com/in/matthew-seagren/",
-      output: "0"
+      output: "0",
+      storedOP: '',
+      storedRightOp: 0,
+      firstSignState: true
     }
 
     // this.renderView = this.renderView.bind(this)
@@ -23,19 +26,43 @@ class Calculator extends React.Component {
 
     var cSymbol = e.target.textContent;
     var outp = this.state.output;
+    var sOp = this.state.storedOP;
+    var sROp = this.state.storedRightOp;
+    var firstSign = this.state.firstSignState;
 
     function equals(str) {
       var isLeft = true;
       var leftOp = '';
       var rightOp = '';
       var cOp = '';
-      var operands = ['+', '-', '*', '/', '%'];
+      var operands = ['+', '-', '*', '/'];
 
+      if (firstSign) {
+        str = Number(str);
+        var firstResult = 0;
+
+        if (sOp === '+') {
+          firstResult = str + sROp;
+        } else if (sOp === '-') {
+          firstResult = str - sROp;
+        } else if (sOp === '*') {
+          firstResult = str * sROp;
+        } else if (sOp === '/') {
+          firstResult = str / sROp;
+        } else if (sOp === '%') {
+          firstResult = str / 100;
+        }
+
+        return firstResult.toString();
+      }
 
       for (var i = 0; i < str.length; i++) {
-        if (operands.includes(str[i])) {
+        if (str[i] === '%') {
+          sOp = '%';
+          leftOp = Number(leftOp) / 100;
+          leftOp = leftOp.toString();
+        } else if (operands.includes(str[i])) {
           if (!isLeft) {
-            debugger;
             leftOp = Number(leftOp);
             rightOp = Number(rightOp);
 
@@ -66,20 +93,34 @@ class Calculator extends React.Component {
         }
       }
 
+      firstSign = true;
       leftOp = Number(leftOp);
       rightOp = Number(rightOp);
+      var result = 0;
 
-      if (cOp === '+') {
-        return leftOp + rightOp;
+      if (cOp === '') {
+        result = leftOp;
+      } else if (cOp === '+') {
+        sOp = '+';
+        sROp = rightOp;
+        result = leftOp + rightOp;
       } else if (cOp === '-') {
-        return leftOp - rightOp;
+        sOp = '-';
+        sROp = rightOp;
+        result = leftOp - rightOp;
       } else if (cOp === '*') {
-        return leftOp * rightOp;
+        sOp = '*';
+        sROp = rightOp;
+        result = leftOp * rightOp;
       } else if (cOp === '/') {
-        return leftOp / rightOp;
+        sOp = '/';
+        sROp = rightOp;
+        result = leftOp / rightOp;
       } else {
         console.log('Operand is not added yet');
       }
+
+      return result.toString();
     }
 
     function calculate(sym) {
@@ -97,68 +138,51 @@ class Calculator extends React.Component {
       }
 
       if (sym === 'AC') {
-        console.log('Button pressed is AC');
         outp = '0';
       } else if (sym === "(") {
-        console.log('Button pressed is (');
         checkZero('(');
       } else if (sym === ")") {
-        console.log('Button pressed is )');
         checkZero(')');
       } else if (sym === "%") {
-        console.log('Button pressed is %');
-        // checkZero('%');
+        debugger;
+        firstSign = false;
         outp += '%';
       } else if (sym === "7") {
-        console.log('Button pressed is 7');
         checkZero('7');
       } else if (sym === "8") {
-        console.log('Button pressed is 8');
         checkZero('8');
       } else if (sym === "9") {
-        console.log('Button pressed is 9');
         checkZero('9');
       } else if (sym === "/") {
-        console.log('Button pressed is /');
-        // checkZero('/');
+        firstSign = false;
         outp += ' / ';
       } else if (sym === "4") {
-        console.log('Button pressed is 4');
         checkZero('4');
       } else if (sym === "5") {
-        console.log('Button pressed is 5');
         checkZero('5');
       } else if (sym === "6") {
-        console.log('Button pressed is 6');
         checkZero('6');
       } else if (sym === "*") {
-        console.log('Button pressed is *');
+        firstSign = false;
         outp += ' * ';
       } else if (sym === "1") {
-        console.log('Button pressed is 1');
         checkZero('1');
       } else if (sym === "2") {
-        console.log('Button pressed is 2');
         checkZero('2');
       } else if (sym === "3") {
-        console.log('Button pressed is 3');
         checkZero('3');
       } else if (sym === "-") {
-        console.log('Button pressed is -');
+        firstSign = false;
         outp += ' - ';
       } else if (sym === "0") {
-        console.log('Button pressed is 0');
         checkZero('0');
       } else if (sym === ".") {
-        console.log('Button pressed is .');
         outp += '.';
       } else if (sym === "=") {
-        console.log('Button pressed is =');
         outp = outp.split(' ').join('');
-        // console.log(outp);
         outp = equals(outp);
       } else if (sym === "+") {
-        console.log('Button pressed is +');
+        firstSign = false;
         outp += ' + ';
       } else {
         console.log('Button is not logged');
@@ -166,7 +190,7 @@ class Calculator extends React.Component {
     }
     calculate(cSymbol);
 
-    this.setState({ output: outp });
+    this.setState({ output: outp, storedOP: sOp, storedRightOp: sROp, firstSignState: firstSign });
   }
 
   render() {
