@@ -1,12 +1,22 @@
 import '../App.css';
+import React from 'react';
 import Calculator from './calculator.jsx';
 
-function App() {
-  return (
-    <div className="App">
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      fill: ''
+    }
+
+    // this.renderView = this.renderView.bind(this);
+  }
+
+  render() {
+    return <div className="App">
       <Calculator />
-    </div>
-  );
+    </div>;
+  }
 }
 
 export default App;
