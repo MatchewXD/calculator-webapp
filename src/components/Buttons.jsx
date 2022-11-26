@@ -22,6 +22,7 @@ class Buttons extends React.Component {
     var sOp = this.state.storedOP;
     var sROp = this.state.storedRightOp;
     var firstSign = this.state.firstSignState;
+    var pPhase = this.state.parenthesisPhase;
 
     function equals(str) {
       var isLeft = true;
@@ -118,6 +119,7 @@ class Buttons extends React.Component {
 
     function calculate(sym) {
       var isZero = true;
+
       if (outp !== '0') {
         isZero = false;
       }
@@ -130,31 +132,26 @@ class Buttons extends React.Component {
         }
       }
 
-      function parPhase(par) { // Parenthesis Function
-        console.log("A Parenthesis was used");
-        // when left par is added the calculator should auto add a left par
-        // When right par is pressed the calulator should end the par phase
+      // function parPhase(par) { // Parenthesis Function
+      // console.log("A Parenthesis was used");
+      // when left par is added the calculator should auto add a left par
+      // When right par is pressed the calulator should end the par phase
 
-        // During the par phase any new symbol added is placed left of the right par
-        // When equals() runs it should calculate operations in parenthesis seperatly probably in a
-        // recursive function
-        // when no operation is present in a par phase the return "ERROR"
-        // when only a number exists in the par phase return that number
-        // when a number is left of the par phase the equal function assume the number to the left is multiplied by the result of the par phase
-        if (par === '(') {
-          checkZero('(');
-          outp += ')';
-        }
-      }
+      // During the par phase any new symbol added is placed left of the right par
+      // When equals() runs it should calculate operations in parenthesis seperatly probably in a
+      // recursive function
+      // when no operation is present in a par phase the return "ERROR"
+      // when only a number exists in the par phase return that number
+      // when a number is left of the par phase the equal function assume the number to the left is multiplied by the result of the par phase
+      // }
 
       if (sym === 'AC') {
         outp = '0';
       } else if (sym === "(") {
-        parPhase('(');
+        checkZero('(');
       } else if (sym === ")") {
-        parPhase(')');
+        checkZero(')');
       } else if (sym === "%") {
-        firstSign = false;
         outp += '%';
       } else if (sym === "7") {
         checkZero('7');
@@ -199,7 +196,7 @@ class Buttons extends React.Component {
     }
     calculate(cSymbol);
 
-    this.setState({ output: outp, storedOP: sOp, storedRightOp: sROp, firstSignState: firstSign });
+    this.setState({ output: outp, storedOP: sOp, storedRightOp: sROp, firstSignState: firstSign, parenthesisPhase: pPhase });
   }
 
 
