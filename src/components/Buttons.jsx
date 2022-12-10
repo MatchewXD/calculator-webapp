@@ -202,6 +202,23 @@ class Buttons extends React.Component {
           return;
         }
 
+        if (symb === '(') {
+          cL++;
+          if (isZero) {
+            opContainer[cL] = symb;
+            return;
+          } else {
+            if (opContainer[cL] === undefined) {
+              opContainer[cL] = symb;
+              return;
+            } else {
+              opContainer[cL] += symb;
+              return;
+            }
+          }
+        }
+
+        // is a Number
         if (isZero) {
           opContainer[cL] = symb;
         } else {
@@ -224,10 +241,11 @@ class Buttons extends React.Component {
       // }
     }
     calculate(cSymbol);
+    console.log(opContainer);
     outp = '' + opContainer;
     outp = outp.replace(/,/g, '');
 
-    this.setState({ output: outp, storedOP: sOp, storedRightOp: sROp, firstSignState: firstSign, parenthesisPhase: pPhase, operationContainer: opContainer });
+    this.setState({ output: outp, storedOP: sOp, storedRightOp: sROp, firstSignState: firstSign, parenthesisPhase: pPhase, currentLevel: cL, operationContainer: opContainer });
   }
 
 
