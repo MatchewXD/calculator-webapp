@@ -1,16 +1,14 @@
 import '../App.css';
 import React from 'react';
+import { create, all } from 'mathjs';
+
+const config = {};
+const math = create(all, config);
 class Buttons extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      output: '0',
-      storedOP: '',
-      storedRightOp: 0,
-      firstSignState: true,
-      parenthesisActive: false,
-      operationContainer: ['0'],
-      currentLevel: 0
+      output: '0'
     }
 
     // this.renderView = this.renderView.bind(this)
@@ -22,230 +20,51 @@ class Buttons extends React.Component {
 
     var cSymbol = e.target.textContent;
     var outp = this.state.output;
-    var sOp = this.state.storedOP;
-    var sROp = this.state.storedRightOp;
-    var firstSign = this.state.firstSignState;
-    var pPhase = this.state.parenthesisActive;
-    var opContainer = this.state.operationContainer;
-    var cL = this.state.currentLevel;
-
-
-    // function equals(str) {
-    //   var isLeft = true;
-    //   var leftOp = '';
-    //   var rightOp = '';
-    //   var cOp = '';
-    //   var operands = ['+', '-', '*', '/'];
-
-    //   if (firstSign) {
-    //     str = Number(str);
-    //     var firstResult = 0;
-
-    //     if (sOp === '+') {
-    //       firstResult = str + sROp;
-    //     } else if (sOp === '-') {
-    //       firstResult = str - sROp;
-    //     } else if (sOp === '*') {
-    //       firstResult = str * sROp;
-    //     } else if (sOp === '/') {
-    //       firstResult = str / sROp;
-    //     } else if (sOp === '%') {
-    //       firstResult = str / 100;
-    //     }
-
-    //     return firstResult.toString();
-    //   }
-
-    //   for (var i = 0; i < str.length; i++) {
-    //     if (str[i] === '%') {
-    //       sOp = '%';
-    //       leftOp = Number(leftOp) / 100;
-    //       leftOp = leftOp.toString();
-    //     } else if (operands.includes(str[i])) {
-    //       if (!isLeft) {
-    //         leftOp = Number(leftOp);
-    //         rightOp = Number(rightOp);
-
-    //         if (cOp === '+') {
-    //           leftOp = leftOp + rightOp;
-    //         } else if (cOp === '-') {
-    //           leftOp = leftOp - rightOp;
-    //         } else if (cOp === '*') {
-    //           leftOp = leftOp * rightOp;
-    //         } else if (cOp === '/') {
-    //           leftOp = leftOp / rightOp;
-    //         }
-
-    //         leftOp = leftOp.toString();
-    //         rightOp = '';
-    //         cOp = str[i];
-    //       } else {
-    //         cOp = str[i];
-    //         isLeft = false;
-    //       }
-
-    //     } else {
-    //       if (isLeft) {
-    //         leftOp += str[i];
-    //       } else {
-    //         rightOp += str[i];
-    //       }
-    //     }
-    //   }
-
-    //   firstSign = true;
-    //   leftOp = Number(leftOp);
-    //   rightOp = Number(rightOp);
-    //   var result = 0;
-
-    //   if (cOp === '') {
-    //     result = leftOp;
-    //   } else if (cOp === '+') {
-    //     sOp = '+';
-    //     sROp = rightOp;
-    //     result = leftOp + rightOp;
-    //   } else if (cOp === '-') {
-    //     sOp = '-';
-    //     sROp = rightOp;
-    //     result = leftOp - rightOp;
-    //   } else if (cOp === '*') {
-    //     sOp = '*';
-    //     sROp = rightOp;
-    //     result = leftOp * rightOp;
-    //   } else if (cOp === '/') {
-    //     sOp = '/';
-    //     sROp = rightOp;
-    //     result = leftOp / rightOp;
-    //   } else {
-    //     console.log('Operand is not added yet');
-    //   }
-
-    //   return result.toString();
-    // }
-
-    function equals() {
-      // Input: an array of strings and arrays
-      // Output: an array with a string
-      var leftSide = true;
-      var left = '';
-      var currentOperator = '';
-      var right = '';
-      var equation = '' + opContainer;
-      var result = 0;
-      equation = equation.replace(/,/g, '');
-      equation = equation.split(' ').join('');
-
-      for (var i = 0; i < equation.length; i++) {
-        if (equation[i] === '+' || equation[i] === '-' || equation[i] === '*' || equation[i] === '/') {
-          currentOperator = equation[i];
-          sOp = equation[i];
-          leftSide = false;
-        } else {
-          if (leftSide) {
-            left += equation[i];
-          } else {
-            right += equation[i];
-            sROp = equation[i];
-          }
-        }
-      }
-
-      left = Number(left);
-      if (right === '') {
-        right = Number(sROp);
-        currentOperator = sOp;
-      } else {
-        right = Number(right);
-      }
-
-      if (currentOperator === '+') {
-        result = left + right;
-      } else if (currentOperator === '-') {
-        result = left - right;
-      } else if (currentOperator === '*') {
-        result = left * right;
-      } else if (currentOperator === '/') {
-        result = left / right;
-      }
-
-      result = result.toString();
-      opContainer = [result];
-    }
 
     function calculate(sym) {
-      var isZero = true;
+      var isZero = false;
 
-      if (outp !== '0') {
-        isZero = false;
+      if (outp === '0') {
+        isZero = true;
       }
 
       function updateCon(symb) {
         if (symb === 'AC') {
           outp = '0';
-          opContainer = ['0'];
           return;
         }
 
         if (symb === '+' || symb === '-' || symb === '*' || symb === '/') {
-          firstSign = false;
-          opContainer[cL] += ' ' + symb + ' ';
-          return;
+          if (isZero) {
+            outp = ' ' + symb + ' ';
+            return;
+          } else {
+            outp += ' ' + symb + ' ';
+            return;
+          }
         }
 
         if (symb === '%') {
-          opContainer[cL] += symb;
+          outp += symb;
           return;
         }
 
         if (symb === '=') {
-          equals();
+          outp = [math.evaluate(outp)];
           return;
         }
 
-        if (symb === '(') {
-          cL++;
-          if (isZero) {
-            opContainer[cL] = symb;
-            return;
-          } else {
-            if (opContainer[cL] === undefined) {
-              opContainer[cL] = symb;
-              return;
-            } else {
-              opContainer[cL] += symb;
-              return;
-            }
-          }
-        }
-
-        // is a Number
         if (isZero) {
-          opContainer[cL] = symb;
+          outp = symb;
         } else {
-          opContainer[cL] += symb;
+          outp += symb;
         }
       }
       updateCon(sym);
-
-      // function parPhase(par) { // Parenthesis Function
-      // console.log("A Parenthesis was used");
-      // when left par is added the calculator should auto add a left par
-      // When right par is pressed the calulator should end the par phase
-
-      // During the par phase any new symbol added is placed left of the right par
-      // When equals() runs it should calculate operations in parenthesis seperatly probably in a
-      // recursive function
-      // when no operation is present in a par phase the return "ERROR"
-      // when only a number exists in the par phase return that number
-      // when a number is left of the par phase the equal function assume the number to the left is multiplied by the result of the par phase
-      // }
     }
     calculate(cSymbol);
-    console.log(opContainer);
-    outp = '' + opContainer;
-    outp = outp.replace(/,/g, '');
 
-    this.setState({ output: outp, storedOP: sOp, storedRightOp: sROp, firstSignState: firstSign, parenthesisPhase: pPhase, currentLevel: cL, operationContainer: opContainer });
+    this.setState({ output: outp });
   }
 
 
