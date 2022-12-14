@@ -128,7 +128,7 @@ class Buttons extends React.Component {
         <div className="calc-button period" onClick={this.buttonClick}>
           <p className="button-symbol">.</p>
         </div>
-        <div className="calc-button equals" onClick={this.buttonClick}>
+        <div className="calc-button equals" onClick={this.buttonClick} >
           <p className="button-symbol">=</p>
         </div>
         <div className="calc-button plus" onClick={this.buttonClick}>

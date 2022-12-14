@@ -242,6 +242,12 @@ p {
   border-radius: 34.3439px;
 }
 
+.bubble-text {
+  text-align: center;
+  /* margin-top: 4vw; */
+  font-size: 2vw;
+}
+
 .speech-tail {
   position: absolute;
   width: 0;

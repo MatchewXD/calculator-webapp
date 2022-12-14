@@ -24,6 +24,7 @@ A cheeky web-app calculator that talks smack occationally. A normal calculator w
 - React : 18.2.0
 - React-dom : 18.2.0
 - Mathjs : 11.5.0
+- Animejs: 3.2.1
 
 ## 🚀 Installation and Setup
 ```
