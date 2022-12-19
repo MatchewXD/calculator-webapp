@@ -102,7 +102,6 @@ class Calculator extends React.Component {
   textChange() {
     var count = this.state.silent;
     var cText = this.state.currentText;
-    var prev = cText;
     var check = Math.floor(Math.random() * 100);
 
     if (check > 66 || count >= 2) {
