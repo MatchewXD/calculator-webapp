@@ -3,8 +3,11 @@ import Buttons from './Buttons.jsx';
 import BusinessCard from './BusinessCard.jsx';
 import SpeechBubble from './SpeechBubble.jsx';
 import Eyes from './Eyes.jsx';
+import { create, all } from 'mathjs';
 // import { Link } from 'react-router-dom';
 
+const config = {};
+const math = create(all, config);
 class Calculator extends React.Component {
   constructor(props) {
     super(props)
@@ -12,12 +15,71 @@ class Calculator extends React.Component {
       github: "https://github.com/MatchewXD",
       linkedin: "https://www.linkedin.com/in/matthew-seagren/",
       status: true,
-      currentText: 0
+      currentText: 0,
+      output: '0',
+      silent: 0
     }
 
     // this.renderView = this.renderView.bind(this)
     this.statusButton = this.statusButton.bind(this);
     this.textChange = this.textChange.bind(this);
+    this.buttonClick = this.buttonClick.bind(this);
+  }
+
+  buttonClick(e) {
+    e.preventDefault();
+
+    var cSymbol = e.target.textContent;
+    var outp = this.state.output;
+
+    function calculate(sym) {
+      var isZero = false;
+
+      if (outp === '0') {
+        isZero = true;
+      }
+
+      function updateCon(symb) {
+        if (symb === 'AC') {
+          outp = '0';
+          return;
+        }
+
+        if (symb === '+' || symb === '-' || symb === '*' || symb === '/') {
+          if (isZero) {
+            outp = ' ' + symb + ' ';
+            return;
+          } else {
+            outp += ' ' + symb + ' ';
+            return;
+          }
+        }
+
+        if (symb === '%') {
+          outp += symb;
+          return;
+        }
+
+        if (symb === '=') {
+          outp = [math.evaluate(outp)];
+          return;
+        }
+
+        if (isZero) {
+          outp = symb;
+        } else {
+          outp += symb;
+        }
+      }
+      updateCon(sym);
+    }
+    calculate(cSymbol);
+
+    if (cSymbol === '=') {
+      this.textChange();
+    }
+
+    this.setState({ output: outp });
   }
 
   statusButton(e) {
@@ -25,21 +87,35 @@ class Calculator extends React.Component {
 
     var status = this.state.status;
     var cText = this.state.currentText;
-    // console.log("Wake was pressed: ", status);
-    if (status) {
+
+    if (status) { // Wake Calc
       status = false;
       cText = 0;
-    } else {
+    } else { // Sleep Calc
       status = true;
       cText = 1;
     }
+
     this.setState({ status: status, currentText: cText });
   }
 
-  textChange(e) {
-    e.preventDefault();
+  textChange() {
+    var count = this.state.silent;
+    var cText = this.state.currentText;
+    var prev = cText;
+    var check = Math.floor(Math.random() * 100);
 
-    console.log('The changed occured');
+    if (check > 66 || count >= 2) {
+      cText = Math.floor(Math.random() * 11) + 3;
+      // testing
+      // cText = 13;
+      count = 0;
+    } else {
+      cText = 2;
+      count++;
+    }
+
+    this.setState({ silent: count, currentText: cText });
   }
 
   render() {
@@ -50,7 +126,10 @@ class Calculator extends React.Component {
         <Eyes />
         <div className="calc">
           <div className="calc-inner-frame">
-            <Buttons textC={this.textChange} />
+            <div className="output-field">
+              <p className="output-text">{this.state.output}</p>
+            </div>
+            <Buttons buttonClick={this.buttonClick} />
           </div>
         </div>
         <div className="status-button" onClick={this.statusButton} >

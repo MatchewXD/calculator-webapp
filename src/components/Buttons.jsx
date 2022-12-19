@@ -1,9 +1,9 @@
 import '../App.css';
 import React from 'react';
-import { create, all } from 'mathjs';
+// import { create, all } from 'mathjs';
 
-const config = {};
-const math = create(all, config);
+// const config = {};
+// const math = create(all, config);
 class Buttons extends React.Component {
   constructor(props) {
     super(props)
@@ -12,126 +12,126 @@ class Buttons extends React.Component {
     }
 
     // this.renderView = this.renderView.bind(this)
-    this.buttonClick = this.buttonClick.bind(this);
+    // this.buttonClick = this.buttonClick.bind(this);
   }
 
-  buttonClick(e) {
-    e.preventDefault();
+  // buttonClick(e) {
+  //   e.preventDefault();
 
-    var cSymbol = e.target.textContent;
-    var outp = this.state.output;
+  //   var cSymbol = e.target.textContent;
+  //   var outp = this.state.output;
 
-    function calculate(sym) {
-      var isZero = false;
+  //   function calculate(sym) {
+  //     var isZero = false;
 
-      if (outp === '0') {
-        isZero = true;
-      }
+  //     if (outp === '0') {
+  //       isZero = true;
+  //     }
 
-      function updateCon(symb) {
-        if (symb === 'AC') {
-          outp = '0';
-          return;
-        }
+  //     function updateCon(symb) {
+  //       if (symb === 'AC') {
+  //         outp = '0';
+  //         return;
+  //       }
 
-        if (symb === '+' || symb === '-' || symb === '*' || symb === '/') {
-          if (isZero) {
-            outp = ' ' + symb + ' ';
-            return;
-          } else {
-            outp += ' ' + symb + ' ';
-            return;
-          }
-        }
+  //       if (symb === '+' || symb === '-' || symb === '*' || symb === '/') {
+  //         if (isZero) {
+  //           outp = ' ' + symb + ' ';
+  //           return;
+  //         } else {
+  //           outp += ' ' + symb + ' ';
+  //           return;
+  //         }
+  //       }
 
-        if (symb === '%') {
-          outp += symb;
-          return;
-        }
+  //       if (symb === '%') {
+  //         outp += symb;
+  //         return;
+  //       }
 
-        if (symb === '=') {
-          outp = [math.evaluate(outp)];
-          return;
-        }
+  //       if (symb === '=') {
+  //         outp = [math.evaluate(outp)];
+  //         return;
+  //       }
 
-        if (isZero) {
-          outp = symb;
-        } else {
-          outp += symb;
-        }
-      }
-      updateCon(sym);
-    }
-    calculate(cSymbol);
+  //       if (isZero) {
+  //         outp = symb;
+  //       } else {
+  //         outp += symb;
+  //       }
+  //     }
+  //     updateCon(sym);
+  //   }
+  //   calculate(cSymbol);
 
-    this.setState({ output: outp });
-  }
+  //   this.setState({ output: outp });
+  // }
 
 
   render() {
     return <div>
-      <div className="output-field">
+      {/* <div className="output-field">
         <p className="output-text">{this.state.output}</p>
-      </div>
+      </div> */}
       <div className="buttons-frame" >
-        <div className="calc-button left-paratheses" onClick={this.buttonClick}>
+        <div className="calc-button left-paratheses" onClick={this.props.buttonClick}>
           <p className="button-symbol">(</p>
         </div>
-        <div className="calc-button right-paratheses" onClick={this.buttonClick}>
+        <div className="calc-button right-paratheses" onClick={this.props.buttonClick}>
           <p className="button-symbol">)</p>
         </div>
-        <div className="calc-button percent" onClick={this.buttonClick}>
+        <div className="calc-button percent" onClick={this.props.buttonClick}>
           <p className="button-symbol">%</p>
         </div>
-        <div className="calc-button ac" onClick={this.buttonClick}>
+        <div className="calc-button ac" onClick={this.props.buttonClick}>
           <p className="button-symbol">AC</p>
         </div>
-        <div className="calc-button seven" onClick={this.buttonClick}>
+        <div className="calc-button seven" onClick={this.props.buttonClick}>
           <p className="button-symbol">7</p>
         </div>
-        <div className="calc-button eight" onClick={this.buttonClick}>
+        <div className="calc-button eight" onClick={this.props.buttonClick}>
           <p className="button-symbol">8</p>
         </div>
-        <div className="calc-button nine" onClick={this.buttonClick}>
+        <div className="calc-button nine" onClick={this.props.buttonClick}>
           <p className="button-symbol">9</p>
         </div>
-        <div className="calc-button slash" onClick={this.buttonClick}>
+        <div className="calc-button slash" onClick={this.props.buttonClick}>
           <p className="button-symbol">/</p>
         </div>
-        <div className="calc-button four" onClick={this.buttonClick}>
+        <div className="calc-button four" onClick={this.props.buttonClick}>
           <p className="button-symbol">4</p>
         </div>
-        <div className="calc-button five" onClick={this.buttonClick}>
+        <div className="calc-button five" onClick={this.props.buttonClick}>
           <p className="button-symbol">5</p>
         </div>
-        <div className="calc-button six" onClick={this.buttonClick}>
+        <div className="calc-button six" onClick={this.props.buttonClick}>
           <p className="button-symbol">6</p>
         </div>
-        <div className="calc-button astrix" onClick={this.buttonClick}>
+        <div className="calc-button astrix" onClick={this.props.buttonClick}>
           <p className="button-symbol">*</p>
         </div>
-        <div className="calc-button one" onClick={this.buttonClick}>
+        <div className="calc-button one" onClick={this.props.buttonClick}>
           <p className="button-symbol">1</p>
         </div>
-        <div className="calc-button two" onClick={this.buttonClick}>
+        <div className="calc-button two" onClick={this.props.buttonClick}>
           <p className="button-symbol">2</p>
         </div>
-        <div className="calc-button three" onClick={this.buttonClick}>
+        <div className="calc-button three" onClick={this.props.buttonClick}>
           <p className="button-symbol">3</p>
         </div>
-        <div className="calc-button minus" onClick={this.buttonClick}>
+        <div className="calc-button minus" onClick={this.props.buttonClick}>
           <p className="button-symbol">-</p>
         </div>
-        <div className="calc-button zero" onClick={this.buttonClick}>
+        <div className="calc-button zero" onClick={this.props.buttonClick}>
           <p className="button-symbol">0</p>
         </div>
-        <div className="calc-button period" onClick={this.buttonClick}>
+        <div className="calc-button period" onClick={this.props.buttonClick}>
           <p className="button-symbol">.</p>
         </div>
-        <div className="calc-button equals" onClick={this.buttonClick} >
+        <div className="calc-button equals" onClick={this.props.buttonClick} >
           <p className="button-symbol">=</p>
         </div>
-        <div className="calc-button plus" onClick={this.buttonClick}>
+        <div className="calc-button plus" onClick={this.props.buttonClick}>
           <p className="button-symbol">+</p>
         </div>
       </div>
