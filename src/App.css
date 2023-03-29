@@ -207,25 +207,34 @@ p {
 }
 
 .eye {
-  width: 10vw;
-  height: 10vw;
-  min-width: 105px;
-  min-height: 105px;
+  width: 12vw;
+  height: 6vw;
+  min-width: 50px;
+  min-height: 50px;
   max-width: 195px;
   max-height: 195px;
 
   background-color: var(--alto);
   border: 1px solid black;
-  border-radius: 50%;
+  border-radius: 2vw;
+  overflow: hidden;
   position: relative;
+
+  bottom: 3vw
 }
 
 .left.eye {
-  left: 39%;
+  right: 3%;
+}
+
+.leftlid {
+  width: 12vw;
+  height: 6vw;
+  background-color: #0CCDD9;
 }
 
 .right.eye {
-  right: 39%;
+  left: 3%;
 }
 
 /* Motion */
@@ -355,5 +364,16 @@ p {
   height: 4vw;
   border: 1px solid black;
   background-color: #0CCDD9;
-  border-radius: 50%;
+  border-radius: 1.9vw;
+  overflow: hidden;
+}
+
+.testani2 {
+  position: absolute;
+  width: 9vw;
+  height: 4vw;
+  top: 2vw;
+  border: 1px solid black;
+  background-color: #910cd9;
+  border-radius: 1.9vw;
 }
