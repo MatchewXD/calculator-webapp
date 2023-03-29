@@ -4,6 +4,8 @@ import BusinessCard from './BusinessCard.jsx';
 import SpeechBubble from './SpeechBubble.jsx';
 import Eyes from './Eyes.jsx';
 import { create, all } from 'mathjs';
+import { motion } from 'framer-motion';
+
 // import { Link } from 'react-router-dom';
 
 const config = {};
@@ -135,6 +137,16 @@ class Calculator extends React.Component {
           {this.state.status ? <p className="status-text">Wake</p> : <p className="status-text">Sleep</p>}
         </div>
       </div>
+      <div className="testani"></div>
+      <motion.button
+        whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.9 }}
+        animate={{ x: [5, 100, 0] }}
+        className="testButton"
+        onClick={() => console.log("Clicked Motion Button")}
+      >
+        Test Button
+      </motion.button>
     </div >;
   }
 }

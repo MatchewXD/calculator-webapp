@@ -228,6 +228,16 @@ p {
   right: 39%;
 }
 
+/* Motion */
+
+.motion {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
 /* Speech Bubble */
 
 .speech-bubble {
@@ -336,4 +346,14 @@ p {
   .speech-tail {
     border-color: transparent transparent transparent transparent;
   }
+}
+
+/* Animation */
+
+.testani {
+  width: 9vw;
+  height: 4vw;
+  border: 1px solid black;
+  background-color: #0CCDD9;
+  border-radius: 50%;
 }
